@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,logout
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Exp , Content, UserProfile
@@ -598,6 +598,9 @@ def sportsdetail(request):
 
     return render(request, 'sports_detail.html', {'data': post,'show_data_condition' : show_data_condition})
 
-
+def logout_view(request):
+    if request.method == 'POST':
+            logout(request)
+            return redirect('welcome_page')
 
 

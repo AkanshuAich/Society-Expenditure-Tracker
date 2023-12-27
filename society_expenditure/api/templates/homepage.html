@@ -16,7 +16,7 @@
 
         .container {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 5px auto;
             overflow: hidden;
         }
 
@@ -68,11 +68,42 @@
             font-size: 1em;
             line-height: 1.4;
         }
+        .btn2 {
+    
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #3be46b;
+            color: #161313;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow:8px 8px 12px rgb(21, 1, 1);
+
+
+        }
+        .btn2:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
     </style>
     <title>Homepage</title>
 </head>
 <body>
-
+    <header class="wrapper">
+        <nav>
+            <ul>
+                <li>
+                    <form class="logout-link" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn2">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
 <div class="container">
     <div class="row">
         <div class="block">
@@ -190,7 +221,6 @@
         </div>
     </div>
 </div>
-<button class="btn2"><a href="">Logout</a></button>
 <!-- <script>
     // Assume that this is the current user retrieved from the server.
     var currentUser = "login_username";
