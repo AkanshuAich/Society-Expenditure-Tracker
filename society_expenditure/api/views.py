@@ -598,14 +598,4 @@ def sportsdetail(request):
 
     return render(request, 'sports_detail.html', {'data': post,'show_data_condition' : show_data_condition})
 
-def your_view(request):
-    # Your existing view logic
 
-    user = request.user  # Assuming you have authentication middleware enabled
-
-    context = {
-        'user_username': user.username,
-        # Add other relevant user information
-    }
-
-    return render(request, 'homepage.html', context)
