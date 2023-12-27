@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Exp , Content
+from .models import Exp , Content, UserProfile
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
@@ -597,5 +597,7 @@ def sportsdetail(request):
 
 
     return render(request, 'sports_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+
+
 
 
