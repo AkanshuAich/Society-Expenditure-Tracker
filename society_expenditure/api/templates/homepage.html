@@ -82,7 +82,7 @@
             <h2>FATS</h2>
             <p>Description for Block 1.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'fats' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'fats' %}" id = "fats">Update</a></button>
                 <button class="btn1"><a href="{% url 'fatdetail' %}">View</a></button>
             </div>
             
@@ -94,7 +94,7 @@
             <h2>CULT</h2>
             <p>Description for Block 2.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'cult' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'cult' %}" id = "cult">Update</a></button>
                 <button class="btn1"><a href="{% url 'cultdetail' %}">View</a></button>
             </div>
         </div>
@@ -105,7 +105,7 @@
             <h2>PARACOSM</h2>
             <p>Description for Block 3.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'paracosm' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'paracosm' %}" id = "paracosm">Update</a></button>
                 <button class="btn1"><a href="{% url 'paracosmdetail' %}">View</a></button>
             </div>
         </div>
@@ -119,7 +119,7 @@
             <h2>PHOTOGEEKS</h2>
             <p>Description for Block 4.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'photogeeks' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'photogeeks' %}" id="photogeeks">Update</a></button>
                 <button class="btn1"><a href="{% url 'photogeeksdetail' %}">View</a></button>
             </div>
         </div>
@@ -130,7 +130,7 @@
             <h2>TECH</h2>
             <p>Description for Block 5.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'tech' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'tech' %}" id="tech">Update</a></button>
                 <button class="btn1"><a href="{% url 'techdetail' %}">View</a></button>
             </div>
         </div>
@@ -141,7 +141,7 @@
             <h2>VEDANT SAMITI</h2>
             <p>Description for Block 6.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'vedant' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'vedant' %}" id="vedant">Update</a></button>
                 <button class="btn1"><a href="{% url 'vedantdetail' %}">View</a></button>
             </div>
         </div>
@@ -152,7 +152,7 @@
             <h2>MEGAHEARTZ</h2>
             <p>Description for Block 6.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'megaheartz' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'megaheartz' %}" id="megaheartz">Update</a></button>
                 <button class="btn1"><a href="{% url 'megaheartzdetail' %}">View</a></button>
             </div>
         </div>
@@ -163,7 +163,7 @@
             <h2>TARS</h2>
             <p>Description for Block 6.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'tars' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'tars' %}" id="tars">Update</a></button>
                 <button class="btn1"><a href="{% url 'tarsdetail' %}">View</a></button>
             </div>
         </div>
@@ -174,7 +174,7 @@
             <h2>ECELL</h2>
             <p>Description for Block 6.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'ecell' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'ecell' %}" id="ecell">Update</a></button>
                 <button class="btn1"><a href="{% url 'ecelldetail' %}">View</a></button>
             </div>
         </div>
@@ -185,12 +185,84 @@
             <h2>SPORTS SOCIETY</h2>
             <p>Description for Block 6.</p>
             <div class="link-container">
-                <button class="btn"><a href="{% url 'sports' %}">Update</a></button>
+                <button class="btn"><a href="{% url 'sports' %}" id="sports">Update</a></button>
                 <button class="btn1"><a href="{% url 'sportsdetail' %}">View</a></button>
             </div>
         </div>
     </div>
 </div>
 <button class="btn2"><a href="">Logout</a></button>
+<!-- <script>
+    // Assume that this is the current user retrieved from the server.
+    var currentUser = "login_username";
+
+    // Element representing the restricted link
+    var restrictedLink1 = document.getElementById("fats");
+    var restrictedLink2 = document.getElementById("cult");
+    var restrictedLink3 = document.getElementById("paracosm");
+    var restrictedLink4 = document.getElementById("photogeeks");
+    var restrictedLink5 = document.getElementById("tech");
+    var restrictedLink6 = document.getElementById("vedant");
+    var restrictedLink7 = document.getElementById("megaheartz");
+    var restrictedLink8 = document.getElementById("tars");
+    var restrictedLink9 = document.getElementById("ecell");
+    var restrictedLink10 = document.getElementById("sports");
+
+    // Hardcoded allowed user
+    var allowedUser = "Akanshu";
+
+    // Check if the current user is the allowed user
+    if (currentUser === allowedUser) {
+        // Show the link
+        restrictedLink1.style.display = "block";
+    } else {
+        // Hide the link
+        restrictedLink1.style.display = "none";
+        // restrictedLink3.style.display = "none";
+        // restrictedLink4.style.display = "none";
+        // restrictedLink5.style.display = "none";
+        // restrictedLink6.style.display = "none";
+        // restrictedLink7.style.display = "none";
+        // restrictedLink8.style.display = "none";
+        // restrictedLink9.style.display = "none";
+        // restrictedLink10.style.display = "none";
+    }
+</script>
+<script>
+    // Assume that this is the current user retrieved from the server.
+    var currentUser = "login_username";
+
+    // Element representing the restricted link
+    var restrictedLink1 = document.getElementById("fats");
+    var restrictedLink2 = document.getElementById("cult");
+    var restrictedLink3 = document.getElementById("paracosm");
+    var restrictedLink4 = document.getElementById("photogeeks");
+    var restrictedLink5 = document.getElementById("tech");
+    var restrictedLink6 = document.getElementById("vedant");
+    var restrictedLink7 = document.getElementById("megaheartz");
+    var restrictedLink8 = document.getElementById("tars");
+    var restrictedLink9 = document.getElementById("ecell");
+    var restrictedLink10 = document.getElementById("sports");
+
+    // Hardcoded allowed user
+    var allowedUser = "AkanshuAich";
+
+    // Check if the current user is the allowed user
+    if (currentUser === allowedUser) {
+        // Show the link
+        restrictedLink2.style.display = "block";
+    } else {
+        // Hide the link
+        restrictedLink2.style.display = "none";
+    //     restrictedLink3.style.display = "none";
+    //     restrictedLink4.style.display = "none";
+    //     restrictedLink5.style.display = "none";
+    //     restrictedLink6.style.display = "none";
+    //     restrictedLink7.style.display = "none";
+    //     restrictedLink8.style.display = "none";
+    //     restrictedLink9.style.display = "none";
+    //     restrictedLink10.style.display = "none";
+    }
+</script> -->
 </body>
 </html>
