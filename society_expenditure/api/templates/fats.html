@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url("/static/images/fatlogin.jpg");
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            backdrop-filter: blur(30px);
+            box-shadow: 10px 10px 20px rgb(21, 1, 1);
+            border-color: #fff;
+            
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            background: transparent;
+            color: #fff;
+            font-weight: bolder;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            font-size: 14px;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+            background: transparent;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #f6f8f9;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>FATS-UPDATE-Form</title>
+</head>
+<body>
+
+<form id="fats-form" class="form" method="POST">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+        <select id="name" name="name" required>
+            <option value="option1">FATS</option>
+            <option value="option2">CULT</option>
+            <option value="option3">PARACOSM</option>
+            <option value="option1">PHOTOGEEKS</option>
+            <option value="option2">TECH</option>
+            <option value="option3">VEDANT_SAMITI</option>
+            <option value="option1">MEGAHEARTZ</option>
+            <option value="option2">TARS</option>
+            <option value="option3">ECELL</option>
+            <option value="option3">SPORTS</option>
+        </select>
+
+    <label for="event">Event:</label>
+    <input type="text" id="event" name="event" required>
+
+    <label for="date">Date_OF_Event:</label>
+    <input type="date" id="date" name="date" required>
+
+
+    <label for="totalAmount">Total Amount:</label>
+    <input type="number" id="totalAmount" name="totalAmount" required>
+
+    <label for="totalSpent">Total Spent:</label>
+    <input type="number" id="totalSpent" name="totalSpent" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

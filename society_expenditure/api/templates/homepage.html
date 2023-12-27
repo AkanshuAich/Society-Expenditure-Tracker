@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'js/homepage.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background: url("/static/images/home.jpg");
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .block {
+            flex: 0 0 25%;
+            display:flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #171ba5c2;
+            padding: 10px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow:8px 8px 12px rgb(21, 1, 1);
+        }
+
+        .block:hover {
+            transform: scale(1.05);
+        }
+
+        .block .logo-container {
+            margin-left: 220px;
+        }
+
+        .block .logo-container img {
+            max-width: 85%; /* Adjust the maximum width as needed */
+            max-height: auto;
+            display: flex;
+            margin: 20 auto;
+            
+        }
+
+        .block h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #f4f4f4;
+            margin-top: -30px;
+        }
+
+        .block p {
+            font-size: 1em;
+            line-height: 1.4;
+        }
+    </style>
+    <title>Homepage</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/fats.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>FATS</h2>
+            <p>Description for Block 1.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'fats' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'fatdetail' %}">View</a></button>
+            </div>
+            
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/cult.png' %}" alt="FATS Logo">
+            </div>
+            <h2>CULT</h2>
+            <p>Description for Block 2.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'cult' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'cultdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/paracosm.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>PARACOSM</h2>
+            <p>Description for Block 3.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'paracosm' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'paracosmdetail' %}">View</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/photogeeks.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>PHOTOGEEKS</h2>
+            <p>Description for Block 4.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'photogeeks' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'photogeeksdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/tech.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>TECH</h2>
+            <p>Description for Block 5.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'tech' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'techdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/vedant.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>VEDANT SAMITI</h2>
+            <p>Description for Block 6.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'vedant' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'vedantdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/megaheartz.png' %}" alt="FATS Logo">
+            </div>
+            <h2>MEGAHEARTZ</h2>
+            <p>Description for Block 6.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'megaheartz' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'megaheartzdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/tars.png' %}" alt="FATS Logo">
+            </div>
+            <h2>TARS</h2>
+            <p>Description for Block 6.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'tars' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'tarsdetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/ecell.jpeg' %}" alt="FATS Logo">
+            </div>
+            <h2>ECELL</h2>
+            <p>Description for Block 6.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'ecell' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'ecelldetail' %}">View</a></button>
+            </div>
+        </div>
+        <div class="block">
+            <div class="logo-container">
+                <img src="{% static 'images/sports.jpg' %}" alt="FATS Logo">
+            </div>
+            <h2>SPORTS SOCIETY</h2>
+            <p>Description for Block 6.</p>
+            <div class="link-container">
+                <button class="btn"><a href="{% url 'sports' %}">Update</a></button>
+                <button class="btn1"><a href="{% url 'sportsdetail' %}">View</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn2"><a href="">Logout</a></button>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'js/fat_detail.css' %}">
+    <title>Display Data</title>
+</head>
+<body>
+<h1>ECELL-Detail</h1>
+    <table>c
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Name</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Total_Amount</th>
+                <th>Total_Spent</th>
+                <th>Current_Balance</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i.user.user_name }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.event }}</td>
+                    <td>{{ i.Date }}</td>
+                    <td>{{ i.Total_Amount }}</td>
+                    <td>{{ i.Total_Spent }}</td>
+                    <td>{{ i.Current_Balance }}</td>
+                  
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
