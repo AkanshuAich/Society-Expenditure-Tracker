@@ -10,3 +10,4 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(Exp)
 admin.site.register(Content , ContentAdmin)
 admin.site.register(UserProfile, UserAdmin)
+

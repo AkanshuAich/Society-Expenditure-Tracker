@@ -66,9 +66,10 @@ def signup_views(request):
                 securityquestion = security_question,
                 securityanswer = security_answer,
             )
-
             new_user.set_password(new_user.password)
             new_user.save()
+            print(new_user.securityquestion)
+            print(new_user.securityanswer)
             return redirect(login_views)
     
     return render(request,'signup.html')
@@ -77,15 +78,18 @@ def getpassword(request):
     if request.method == 'POST':
         security_question = request.POST.get('security_question')
         security_answer = request.POST.get('security_answer')
-
-        user = auth.authenticate(security_question = security_question , security_answer = security_answer)
+        print(security_question)
+        print(security_answer)
+        user = auth.authenticate(securityquestion = security_question , securityanswer = security_answer)
         if user is not None:
-            auth.getpassword(request,user)
-            return render(request , 'getpassword.html')
+            original_password = user.password 
+            print(original_password)
+            return render(request, 'getpassword.html', {'password': original_password})
         else:
-            messages.info(request, 'Invalid Security question or answer')
-            return redirect(login_views)
-    return render(request , 'getpassword.html')
+            messages.error(request, 'Invalid Security question or answer')
+            return redirect(getpassword)
+    
+    return render(request, 'getpassword.html')
 
 def fats(request):
     if request.method == 'POST':

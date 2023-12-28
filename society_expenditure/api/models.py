@@ -5,7 +5,8 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Exp(AbstractUser):
     user_name = models.CharField(max_length = 100, default='NULL')
-    
+    securityquestion = models.CharField(max_length = 100, default = '')
+    securityanswer = models.CharField(max_length = 100, default = '')
 
 
 class Content(models.Model):
@@ -33,3 +34,5 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
