@@ -63,7 +63,7 @@ def signup_views(request):
                 email = email_id,
                 password = password1,
                 user_name = name,
-                securityquestiom = security_question,
+                securityquestion = security_question,
                 securityanswer = security_answer,
             )
 
@@ -72,6 +72,20 @@ def signup_views(request):
             return redirect(login_views)
     
     return render(request,'signup.html')
+
+def getpassword(request):
+    if request.method == 'POST':
+        security_question = request.POST.get('security_question')
+        security_answer = request.POST.get('security_answer')
+
+        user = auth.authenticate(security_question = security_question , security_answer = security_answer)
+        if user is not None:
+            auth.getpassword(request,user)
+            return render(request , 'getpassword.html')
+        else:
+            messages.info(request, 'Invalid Security question or answer')
+            return redirect(login_views)
+    return render(request , 'getpassword.html')
 
 def fats(request):
     if request.method == 'POST':

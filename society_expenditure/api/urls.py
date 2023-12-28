@@ -28,7 +28,7 @@ urlpatterns = [
     path('Sports_Society_Update/', views.sports, name="sports"),
     path('Sports_Society_Details/', views.sportsdetail, name='sportsdetail'),
     path('logout/', views.logout_view, name="logout"),
-    #path('get_password/', views.getpassword, name='getpassword'),
+    path('get_password/', views.getpassword, name='getpassword'),
 
 
 ]
