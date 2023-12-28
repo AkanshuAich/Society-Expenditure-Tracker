@@ -46,6 +46,8 @@ def signup_views(request):
         user_name = request.POST.get('username')
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm-password')
+        security_question = request.POST.get('security_question')
+        security_answer = request.POST.get('answer')
 
         if password1 != password2:
             error_message = "Passwords do not match. Please try again."
@@ -61,6 +63,8 @@ def signup_views(request):
                 email = email_id,
                 password = password1,
                 user_name = name,
+                securityquestiom = security_question,
+                securityanswer = security_answer,
             )
 
             new_user.set_password(new_user.password)

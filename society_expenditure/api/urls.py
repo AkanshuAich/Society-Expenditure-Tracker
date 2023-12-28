@@ -27,11 +27,8 @@ urlpatterns = [
     path('ECELL_Details/', views.ecelldetail, name='ecelldetail'),
     path('Sports_Society_Update/', views.sports, name="sports"),
     path('Sports_Society_Details/', views.sportsdetail, name='sportsdetail'),
-    path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
-    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
     path('logout/', views.logout_view, name="logout"),
+    #path('get_password/', views.getpassword, name='getpassword'),
 
 
 ]

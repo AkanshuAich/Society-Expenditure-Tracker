@@ -36,7 +36,17 @@
       {% if error_message %}
         <p class="error">{{ error_message }}</p>
       {% endif %}
-   
+      <div class="input-box">
+        <p>security_question</p>
+        <select id="security_question" name="security_question" aria-placeholder="security_question" required>
+          <option value="option1">What is your favourite movie?</option>
+          <option value="option2">What is your favourite food?</option>
+          <option value="option3">What is your school name?</option>
+        </select>
+      </div>
+      <div class="input-box">
+        <input type="text" id = "answer" name="answer" placeholder="security_answer" required>
+      </div>
       <button type="submit" class="btn">Signup</button>
     </form>
   </div>
