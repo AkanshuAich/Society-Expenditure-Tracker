@@ -83,7 +83,7 @@ def getpassword(request):
         print(security_answer)
         user = auth.authenticate(user_name = username, securityquestion = security_question , securityanswer = security_answer)
         if user is not None:
-            original_password = Exp.password
+            original_password = user.password
             print(original_password)
             return render(request, 'getpassword.html', {'password': original_password})
         else:
