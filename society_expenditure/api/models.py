@@ -1,14 +1,22 @@
 import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your models here.
 class Exp(AbstractUser):
     user_name = models.CharField(max_length = 100, default='NULL')
     securityquestion = models.CharField(max_length = 100, default = '')
     securityanswer = models.CharField(max_length = 100, default = '')
+    password = models.CharField(max_length = 100 , default='')
 
+    def set_password(self, raw_password):
+        # Hash the password using make_password before saving it
+        self.password = make_password(raw_password)
 
+    def check_password(self, raw_password):
+        # Check if the provided raw password matches the stored hashed password
+        return check_password(raw_password, self.password)
 class Content(models.Model):
     user = models.ForeignKey(Exp, on_delete=models.CASCADE)
     name =  models.CharField(max_length = 100, default='NULL')

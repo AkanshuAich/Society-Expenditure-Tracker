@@ -76,13 +76,14 @@ def signup_views(request):
 
 def getpassword(request):
     if request.method == 'POST':
+        username = request.POST.get('username')
         security_question = request.POST.get('security_question')
         security_answer = request.POST.get('security_answer')
         print(security_question)
         print(security_answer)
-        user = auth.authenticate(securityquestion = security_question , securityanswer = security_answer)
+        user = auth.authenticate(user_name = username, securityquestion = security_question , securityanswer = security_answer)
         if user is not None:
-            original_password = user.password 
+            original_password = Exp.password
             print(original_password)
             return render(request, 'getpassword.html', {'password': original_password})
         else:
