@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  society-expenditure-manager:
+    build: .
+    volumes:
+      - .:/SOCIETY-EXPENDITURE-TRACKER
+    ports:
+      - 8000:8000
+    image: society-expenditure-manager:SOCIETY-EXPENDITURE-TRACKER
+    container_name: Society-Expenditure-Manager_container
+    command: python /SOCIETY-EXPENDITURE-TRACKER/society_expenditure/manage.py runserver 0.0.0.0:8000
