@@ -74,23 +74,23 @@ def signup_views(request):
     
     return render(request,'signup.html')
 
-def getpassword(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        security_question = request.POST.get('security_question')
-        security_answer = request.POST.get('security_answer')
-        print(security_question)
-        print(security_answer)
-        user = auth.authenticate(user_name = username, securityquestion = security_question , securityanswer = security_answer)
-        if user is not None:
-            original_password = user.password
-            print(original_password)
-            return render(request, 'getpassword.html', {'password': original_password})
-        else:
-            messages.error(request, 'Invalid Security question or answer')
-            return redirect(getpassword)
+# def getpassword(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         security_question = request.POST.get('security_question')
+#         security_answer = request.POST.get('security_answer')
+#         print(security_question)
+#         print(security_answer)
+#         user = auth.authenticate(user_name = username, securityquestion = security_question , securityanswer = security_answer)
+#         if user is not None:
+#             original_password = user.password
+#             print(original_password)
+#             return render(request, 'getpassword.html', {'password': original_password})
+#         else:
+#             messages.error(request, 'Invalid Security question or answer')
+#             return redirect(getpassword)
     
-    return render(request, 'getpassword.html')
+#     return render(request, 'getpassword.html')
 
 def fats(request):
     if request.method == 'POST':
