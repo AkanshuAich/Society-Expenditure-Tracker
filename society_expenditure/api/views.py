@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model,logout
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Exp , Content, UserProfile
+from .models import Exp , Content
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
