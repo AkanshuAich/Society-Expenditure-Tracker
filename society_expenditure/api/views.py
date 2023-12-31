@@ -113,25 +113,6 @@ def fats(request):
 
 def fatdetail(request):
    
-    # all_exp_instances = Exp.objects.all()
-    # all_content_instances = Content.objects.all()
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="FATS").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
-    # if show_data_condition:
-    #     query = """
-    #             SELECT * FROM api_content WHERE name='FATS';
-    #         """
-    #     with connection.cursor() as cursor:
-    #         cursor.execute(query)
-    #         results = cursor.fetchall()
-    # else:
-    #     results = []
 
     post = Content.objects.raw("SELECT * FROM api_content WHERE name='FATS'")
     # context = {
@@ -144,7 +125,7 @@ def fatdetail(request):
     
 
 
-    return render(request, 'fat_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'fat_detail.html', {'data': post})
 
 def cult(request):
     if request.method == 'POST':
