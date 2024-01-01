@@ -100,6 +100,10 @@ def fats(request):
         total_amount = float(request.POST.get('totalAmount'))
         total_spent = float(request.POST.get('totalSpent'))
         current_balance = total_amount-total_spent
+        print(name)
+        print(event)
+        print(date)
+        print(total_amount)
         try:
             user_profile = Exp.objects.get(username=request.user)
             Content.objects.create(user=user_profile,name=name,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
@@ -114,14 +118,15 @@ def fats(request):
 def fatdetail(request):
    
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='FATS'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option1'")
+    #post = Content.objects.filter(name = 'FATS')
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
     #     # 'show_data_condition': show_data_condition,
     #     'results':post
     # }
-
+    print(post)
     
 
 
@@ -148,14 +153,6 @@ def cult(request):
 
 def cultdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="CULT").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -166,7 +163,7 @@ def cultdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='CULT'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option2'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -177,7 +174,7 @@ def cultdetail(request):
     
 
 
-    return render(request, 'cult_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'cult_detail.html', {'data': post})
 
 
 def paracosm(request):
@@ -201,14 +198,6 @@ def paracosm(request):
 
 def paracosmdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="PARACOSM").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -219,7 +208,7 @@ def paracosmdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='PARACOSM'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option3'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -230,7 +219,7 @@ def paracosmdetail(request):
     
 
 
-    return render(request, 'paracosm_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'paracosm_detail.html', {'data': post})
 
 
 def photogeeks(request):
@@ -254,14 +243,7 @@ def photogeeks(request):
 
 def photogeeksdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="PHTOTGEEKS").exists()
-    except Content.DoesNotExist:
         # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -272,7 +254,7 @@ def photogeeksdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='PHOTOGEEKS'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option4'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -283,7 +265,7 @@ def photogeeksdetail(request):
     
 
 
-    return render(request, 'photogeeks_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'photogeeks_detail.html', {'data': post})
 
 def tech(request):
     if request.method == 'POST':
@@ -306,14 +288,6 @@ def tech(request):
 
 def techdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="TECH").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -324,7 +298,7 @@ def techdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='TECH'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option5'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -335,7 +309,7 @@ def techdetail(request):
     
 
 
-    return render(request, 'tech_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'tech_detail.html', {'data': post})
 
 
 def vedant(request):
@@ -359,14 +333,6 @@ def vedant(request):
 
 def vedantdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="VEDANT_SAMITI").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -377,7 +343,7 @@ def vedantdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='VEDANT_SAMITI'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option6'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -388,7 +354,7 @@ def vedantdetail(request):
     
 
 
-    return render(request, 'vedant_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'vedant_detail.html', {'data': post})
 
 
 def megaheartz(request):
@@ -411,15 +377,7 @@ def megaheartz(request):
     return render(request, 'megaheartz.html')
 
 def megaheartzdetail(request):
-   
-    show_data_condition = False
 
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="MEGAHEARTZ").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -430,7 +388,7 @@ def megaheartzdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='MEGAHEARTZ'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option7'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -441,7 +399,7 @@ def megaheartzdetail(request):
     
 
 
-    return render(request, 'megaheartz_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'megaheartz_detail.html', {'data': post})
 
 
 def tars(request):
@@ -465,14 +423,6 @@ def tars(request):
 
 def tarsdetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="TARS").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -483,7 +433,7 @@ def tarsdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='TARS'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option8'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -494,7 +444,7 @@ def tarsdetail(request):
     
 
 
-    return render(request, 'tars_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'tars_detail.html', {'data': post})
 
 
 def ecell(request):
@@ -518,14 +468,6 @@ def ecell(request):
 
 def ecelldetail(request):
    
-    show_data_condition = False
-
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="ECELL").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -536,7 +478,7 @@ def ecelldetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='ECELL'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option9'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -547,7 +489,7 @@ def ecelldetail(request):
     
 
 
-    return render(request, 'ecell_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'ecell_detail.html', {'data': post})
 
 
 def sports(request):
@@ -570,15 +512,7 @@ def sports(request):
     return render(request, 'sports.html')
 
 def sportsdetail(request):
-   
-    show_data_condition = False
 
-    try:
-        # Check condition for data display
-        show_data_condition = Content.objects.filter(name="SPORTS").exists()
-    except Content.DoesNotExist:
-        # Handle the case where no Exp instance with user_name="FATS" is found
-        pass
     # if show_data_condition:
     #     query = """
     #             SELECT * FROM api_content WHERE name='FATS';
@@ -589,7 +523,7 @@ def sportsdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='SPORTS'")
+    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option10'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -600,7 +534,7 @@ def sportsdetail(request):
     
 
 
-    return render(request, 'sports_detail.html', {'data': post,'show_data_condition' : show_data_condition})
+    return render(request, 'sports_detail.html', {'data': post})
 
 def logout_view(request):
     if request.method == 'POST':
