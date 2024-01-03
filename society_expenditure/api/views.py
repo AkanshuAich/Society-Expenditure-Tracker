@@ -143,11 +143,11 @@ def cult(request):
         print(name)
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'cult.html')
@@ -189,11 +189,11 @@ def paracosm(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'paracosm.html')
@@ -234,11 +234,11 @@ def photogeeks(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'photogeeks.html')
@@ -277,13 +277,14 @@ def tech(request):
         total_amount = float(request.POST.get('totalAmount'))
         total_spent = float(request.POST.get('totalSpent'))
         current_balance = total_amount-total_spent
+        print(name)
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name = name,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name = name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'tech.html')
@@ -324,11 +325,11 @@ def vedant(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'vedant.html')
@@ -369,11 +370,11 @@ def megaheartz(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'megaheartz.html')
@@ -414,11 +415,11 @@ def tars(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'tars.html')
@@ -459,11 +460,11 @@ def ecell(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'ecell.html')
@@ -504,11 +505,11 @@ def sports(request):
         current_balance = total_amount-total_spent
         try:
             user_profile = Exp.objects.get(username=request.user)
-            Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=user_profile,name=name, event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
 
         except Exp.DoesNotExist:
             exp_instance = Exp.objects.create(user_name=name)
-            Content.objects.create(user=exp_instance, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
+            Content.objects.create(user=exp_instance,name=name, event=event, Date=date,Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
         return redirect(homepage)
 
     return render(request, 'sports.html')
