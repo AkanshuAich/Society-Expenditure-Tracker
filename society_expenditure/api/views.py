@@ -140,6 +140,7 @@ def cult(request):
         total_amount = float(request.POST.get('totalAmount'))
         total_spent = float(request.POST.get('totalSpent'))
         current_balance = total_amount-total_spent
+        print(name)
         try:
             user_profile = Exp.objects.get(username=request.user)
             Content.objects.create(user=user_profile,event=event, Date=date, Total_Amount=total_amount, Total_Spent=total_spent, Current_Balance = current_balance)
@@ -164,6 +165,7 @@ def cultdetail(request):
     #     results = []
 
     post = Content.objects.raw("SELECT * FROM api_content WHERE name='option2'")
+    #post = Content.objects.filter(name='option2').first()
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -208,7 +210,7 @@ def paracosmdetail(request):
     # else:
     #     results = []
 
-    post = Content.objects.raw("SELECT * FROM api_content WHERE name='option3'")
+    post1 = Content.objects.raw("SELECT * FROM api_content WHERE name='option3'")
     # context = {
     #     # 'all_exp_instances' : all_exp_instances,
     #     # 'all_content_instances' : all_content_instances,
@@ -219,7 +221,7 @@ def paracosmdetail(request):
     
 
 
-    return render(request, 'paracosm_detail.html', {'data': post})
+    return render(request, 'paracosm_detail.html', {'data1': post1})
 
 
 def photogeeks(request):
