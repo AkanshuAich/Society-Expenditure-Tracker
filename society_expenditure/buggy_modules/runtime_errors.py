@@ -1,44 +1,31 @@
 """
-Runtime errors module with simplified call graphs (max depth 2)
-Contains: IndexError, KeyError, TypeError, AttributeError, etc.
+Runtime errors - mixed nesting depths
+Contains: IndexError, KeyError, AttributeError
 """
-import json
-import datetime
 
 class ErrorProneClass:
-    """Class designed to generate runtime errors"""
+    """Class with runtime errors - mixed depths"""
     
     def __init__(self):
         self.data = [1, 2, 3]
-        self.config = {'name': 'test', 'value': 42}
-        self.nested_data = None
+        self.config = {'name': 'test'}
+        self.none_value = None
     
-    def process_list_data(self, index):
-        """Level 1 - Process list with potential IndexError"""
-        return self._get_element_value(index)
+    def get_item(self, index):
+        """IndexError - depth 1 (direct call)"""
+        return self.data[index]  # Bug: IndexError
     
-    def _get_element_value(self, index):
-        """Level 2 - Get element value (IndexError prone)"""
-        # IndexError: list index out of range
-        return self.data[index]  # No bounds checking
+    def get_config(self, key):
+        """KeyError - depth 2 nesting"""
+        return self._fetch_config_value(key)
     
-    def process_dict_data(self, key):
-        """Level 1 - Process dictionary with potential KeyError"""
-        return self._get_dict_element(key)
+    def _fetch_config_value(self, key):
+        """Config fetching - depth 2"""
+        return self.config[key]  # Bug: KeyError
     
-    def _get_dict_element(self, key):
-        """Level 2 - Get dictionary element (KeyError prone)"""
-        # KeyError: key not found
-        return self.config[key]  # No key existence check
-    
-    def process_none_data(self):
-        """Level 1 - Process None data (AttributeError prone)"""
-        return self._call_none_method()
-    
-    def _call_none_method(self):
-        """Level 2 - Call method on None (AttributeError)"""
-        # AttributeError: 'NoneType' object has no attribute 'upper'
-        return self.nested_data.upper()
+    def call_none(self):
+        """AttributeError - depth 1 (direct call)"""
+        return self.none_value.upper()  # Bug: AttributeError
 
 class TypeErrorGenerator:
     """Class that generates type errors"""

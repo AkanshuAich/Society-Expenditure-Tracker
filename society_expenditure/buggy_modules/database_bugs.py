@@ -1,52 +1,31 @@
 """
-Database bugs module with nested call graphs
-Contains: SQL injection, connection leaks, transaction issues, etc.
+Database bugs - mixed nesting depths
+Contains: SQL injection, connection leaks
 """
 import sqlite3
-import mysql.connector
-import psycopg2
-import time
 
-class DatabaseConnectionBugs:
-    """Class with database connection issues"""
+class DatabaseManager:
+    """Database with bugs - mixed depths"""
     
     def __init__(self):
         self.connection = None
-        self.cursor = None
     
-    def connect_to_database(self, db_name):
-        """Level 1 - Connect to database with bugs"""
-        return self._create_db_connection(db_name)
+    def connect(self, db_name):
+        """Connection leak - depth 1 (direct call)"""
+        # Bug: Connection never closed
+        self.connection = sqlite3.connect(db_name)
+        return True
     
-    def _create_db_connection(self, db_name):
-        """Level 2 - Create database connection (connection leak)"""
-        try:
-            # Bug: Connection never closed properly
-            self.connection = sqlite3.connect(db_name)
-            self.cursor = self.connection.cursor()
-            return True
-        except sqlite3.Error:
-            # Bug: Doesn't handle connection errors properly
-            return False
+    def query(self, sql, params=None):
+        """SQL injection - depth 2 nesting"""
+        return self._execute_unsafe_sql(sql, params)
     
-    def execute_query(self, query, params=None):
-        """Level 1 - Execute query with bugs"""
-        return self._unsafe_query_execution(query, params)
-    
-    def _unsafe_query_execution(self, query, params):
-        """Level 2 - Unsafe query execution (SQL injection)"""
-        try:
-            if params:
-                # Bug: String formatting instead of parameterized queries
-                formatted_query = query.format(*params)  # SQL injection risk
-                self.cursor.execute(formatted_query)
-            else:
-                self.cursor.execute(query)
-            
-            return self.cursor.fetchall()
-        except sqlite3.Error:
-            # Bug: Swallows database errors
-            return []
+    def _execute_unsafe_sql(self, sql, params):
+        """Unsafe SQL execution - depth 2"""
+        if params:
+            # Bug: String formatting - SQL injection
+            sql = sql.format(*params)
+        return self.connection.execute(sql).fetchall()
     
     def batch_insert_data(self, table, data_list):
         """Level 1 - Batch insert with bugs"""

@@ -1,38 +1,34 @@
 """
-Authentication bugs module with nested call graphs
-Contains: Weak password hashing, session management issues, authorization bugs, etc.
+Authentication bugs - mixed nesting depths
+Contains: Weak password hashing, session issues
 """
 import hashlib
-import base64
-import random
 import time
-import jwt
 
-class WeakAuthenticationBugs:
-    """Class with weak authentication implementations"""
+class AuthManager:
+    """Auth with weak security - mixed depths"""
     
     def __init__(self):
         self.users = {}
         self.sessions = {}
-        self.failed_attempts = {}
     
-    def register_user(self, username, password, email):
-        """Level 1 - Register user with weak security"""
-        return self._store_user_credentials(username, password, email)
+    def register(self, username, password):
+        """User registration - depth 2 nesting"""
+        return self._store_user_credentials(username, password)
     
-    def _store_user_credentials(self, username, password, email):
-        """Level 2 - Store user credentials (weak hashing)"""
-        # Bug: Weak password hashing - MD5 is cryptographically broken
+    def _store_user_credentials(self, username, password):
+        """Store credentials - depth 2"""
+        # Bug: MD5 is weak, no salt
         password_hash = hashlib.md5(password.encode()).hexdigest()
-        
-        # Bug: No salt used - vulnerable to rainbow table attacks
-        self.users[username] = {
-            'password': password_hash,
-            'email': email,
-            'created_at': time.time()
-        }
-        
+        self.users[username] = password_hash
         return True
+    
+    def login(self, username, password):
+        """User login - depth 1 (direct call)"""
+        # Bug: Weak comparison, timing attack
+        stored_hash = self.users.get(username)
+        input_hash = hashlib.md5(password.encode()).hexdigest()
+        return stored_hash == input_hash
     
     def authenticate_user(self, username, password):
         """Level 1 - Authenticate user with bugs"""

@@ -1,42 +1,38 @@
 """
-Main integration module with nested call graphs
-This module integrates all buggy modules and demonstrates call graph relationships
-Contains: Cross-module dependencies, complex call chains, integration issues
+Main integration - mixed nesting depths
+Simple integration with varied call graph depths
 """
 
-# Import all buggy modules to create call graph relationships
+# Import key buggy modules
 from . import security_vulnerabilities
-from . import code_quality_issues
-from . import lint_errors
 from . import runtime_errors
-from . import memory_leaks
-from . import concurrency_issues
-from . import logic_errors
-from . import error_handling_issues
-from . import data_validation_bugs
-from . import api_integration_bugs
 from . import database_bugs
-from . import file_handling_bugs
 from . import authentication_bugs
-from . import network_bugs
-from . import crypto_bugs
-from . import web_security_bugs
-from . import performance_bugs
-from . import integration_bugs
-from . import testing_bugs
 
-class SocietyExpenditureSystem:
-    """Main system class that integrates all buggy modules"""
+class SocietySystem:
+    """System with integrated bugs - mixed depths"""
     
     def __init__(self):
-        self.db_manager = database_bugs.DatabaseConnectionBugs()
-        self.auth_system = authentication_bugs.WeakAuthenticationBugs()
-        self.file_handler = file_handling_bugs.FileHandlingBugs()
-        self.api_client = api_integration_bugs.APIIntegrationBugs()
-        self.crypto_handler = crypto_bugs.WeakCryptographyBugs()
-        self.web_security = web_security_bugs.XSSVulnerabilities()
-        self.network_client = network_bugs.NetworkConnectionBugs()
-        self.performance_monitor = performance_bugs.AlgorithmicComplexityBugs()
+        self.db = database_bugs.DatabaseManager()
+        self.auth = authentication_bugs.AuthManager()
+        self.security = security_vulnerabilities.DatabaseManager()
+        self.errors = runtime_errors.ErrorProneClass()
+    
+    def register_user(self, username, password):
+        """User registration - depth 1 (direct calls)"""
+        # Direct calls to buggy modules
+        self.db.connect('users.db')
+        return self.auth.register(username, password)
+    
+    def process_user_data(self, user_id, data):
+        """Process user data - depth 2 nesting"""
+        return self._validate_and_store(user_id, data)
+    
+    def _validate_and_store(self, user_id, data):
+        """Validate and store data - depth 2"""
+        # Bug: No validation, direct storage
+        query = f"INSERT INTO user_data VALUES ('{user_id}', '{data}')"
+        return self.db.query(query)
     
     def process_user_registration(self, username, password, email, profile_data):
         """Level 1 - Process user registration (integrates multiple buggy modules)"""
