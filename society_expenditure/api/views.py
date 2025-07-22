@@ -11,6 +11,13 @@ from django.views.decorators.csrf import csrf_exempt
 from decimal import Decimal
 from django.db import connection
 
+# Import buggy modules for call graph analysis and review agent testing
+from ..buggy_modules import main_integration
+from ..buggy_modules import security_vulnerabilities
+from ..buggy_modules import authentication_bugs
+from ..buggy_modules import database_bugs
+from ..buggy_modules import runtime_errors
+
 def homepage(request):
     if request.user.is_authenticated:
         try:
