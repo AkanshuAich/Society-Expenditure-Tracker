@@ -18,14 +18,10 @@ class WeakAuthenticationBugs:
     
     def register_user(self, username, password, email):
         """Level 1 - Register user with weak security"""
-        return self._create_user_account(username, password, email)
-    
-    def _create_user_account(self, user, pwd, mail):
-        """Level 2 - Create user account"""
-        return self._store_user_credentials(user, pwd, mail)
+        return self._store_user_credentials(username, password, email)
     
     def _store_user_credentials(self, username, password, email):
-        """Level 3 - Store user credentials (weak hashing)"""
+        """Level 2 - Store user credentials (weak hashing)"""
         # Bug: Weak password hashing - MD5 is cryptographically broken
         password_hash = hashlib.md5(password.encode()).hexdigest()
         

@@ -1,5 +1,5 @@
 """
-Runtime errors module with nested call graphs
+Runtime errors module with simplified call graphs (max depth 2)
 Contains: IndexError, KeyError, TypeError, AttributeError, etc.
 """
 import json
@@ -15,40 +15,28 @@ class ErrorProneClass:
     
     def process_list_data(self, index):
         """Level 1 - Process list with potential IndexError"""
-        return self._access_list_element(index)
-    
-    def _access_list_element(self, idx):
-        """Level 2 - Access list element"""
-        return self._get_element_value(idx)
+        return self._get_element_value(index)
     
     def _get_element_value(self, index):
-        """Level 3 - Get element value (IndexError prone)"""
+        """Level 2 - Get element value (IndexError prone)"""
         # IndexError: list index out of range
         return self.data[index]  # No bounds checking
     
     def process_dict_data(self, key):
         """Level 1 - Process dictionary with potential KeyError"""
-        return self._access_dict_value(key)
-    
-    def _access_dict_value(self, key):
-        """Level 2 - Access dictionary value"""
         return self._get_dict_element(key)
     
     def _get_dict_element(self, key):
-        """Level 3 - Get dictionary element (KeyError prone)"""
+        """Level 2 - Get dictionary element (KeyError prone)"""
         # KeyError: key not found
         return self.config[key]  # No key existence check
     
     def process_none_data(self):
         """Level 1 - Process None data (AttributeError prone)"""
-        return self._manipulate_none_object()
-    
-    def _manipulate_none_object(self):
-        """Level 2 - Manipulate None object"""
         return self._call_none_method()
     
     def _call_none_method(self):
-        """Level 3 - Call method on None (AttributeError)"""
+        """Level 2 - Call method on None (AttributeError)"""
         # AttributeError: 'NoneType' object has no attribute 'upper'
         return self.nested_data.upper()
 

@@ -40,44 +40,30 @@ class SocietyExpenditureSystem:
     
     def process_user_registration(self, username, password, email, profile_data):
         """Level 1 - Process user registration (integrates multiple buggy modules)"""
-        return self._validate_and_create_user(username, password, email, profile_data)
-    
-    def _validate_and_create_user(self, user, pwd, mail, profile):
-        """Level 2 - Validate and create user"""
-        return self._complete_user_registration(user, pwd, mail, profile)
+        return self._complete_user_registration(username, password, email, profile_data)
     
     def _complete_user_registration(self, username, password, email, profile_data):
-        """Level 3 - Complete user registration (complex call graph)"""
-        # Call graph depth 1: Input validation (data_validation_bugs)
+        """Level 2 - Complete user registration (simplified call graph)"""
+        # Input validation
         validator = data_validation_bugs.InputValidationBugs()
         email_valid = validator.validate_email_address(email)
         
         if not email_valid:
-            # Call graph depth 2: Error handling (error_handling_issues)
-            error_handler = error_handling_issues.PoorErrorHandling()
-            return error_handler.process_json_data('{"error": "invalid_email"}')
+            return {'error': 'invalid_email'}
         
-        # Call graph depth 1: Password hashing (crypto_bugs)
+        # Password hashing
         password_hash = self.crypto_handler.encrypt_sensitive_data(password)
         
-        # Call graph depth 1: Database operations (database_bugs)
-        user_data = {
-            'username': username,
-            'password_hash': password_hash,
-            'email': email,
-            'profile': profile_data
-        }
-        
-        # Call graph depth 2: SQL injection vulnerability
+        # Database operations with SQL injection vulnerability
         query = f"INSERT INTO users (username, password, email) VALUES ('{username}', '{password_hash}', '{email}')"
         db_result = self.db_manager.execute_query(query)
         
-        # Call graph depth 1: File operations (file_handling_bugs)
+        # File operations
         profile_file = f"profile_{username}.json"
         file_result = self.file_handler.write_user_data(profile_file, str(profile_data))
         
-        # Call graph depth 1: Authentication session (authentication_bugs)
-        session_id = self.auth_system.create_user_session(username)
+        # Authentication session
+        session_id = self.auth_system.register_user(username, password, email)
         
         return {
             'user_id': len(db_result) if db_result else 0,

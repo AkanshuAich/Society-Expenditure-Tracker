@@ -16,14 +16,10 @@ class DatabaseConnectionBugs:
     
     def connect_to_database(self, db_name):
         """Level 1 - Connect to database with bugs"""
-        return self._establish_connection(db_name)
-    
-    def _establish_connection(self, database):
-        """Level 2 - Establish connection"""
-        return self._create_db_connection(database)
+        return self._create_db_connection(db_name)
     
     def _create_db_connection(self, db_name):
-        """Level 3 - Create database connection (connection leak)"""
+        """Level 2 - Create database connection (connection leak)"""
         try:
             # Bug: Connection never closed properly
             self.connection = sqlite3.connect(db_name)
@@ -35,14 +31,10 @@ class DatabaseConnectionBugs:
     
     def execute_query(self, query, params=None):
         """Level 1 - Execute query with bugs"""
-        return self._run_sql_query(query, params)
-    
-    def _run_sql_query(self, sql, parameters):
-        """Level 2 - Run SQL query"""
-        return self._unsafe_query_execution(sql, parameters)
+        return self._unsafe_query_execution(query, params)
     
     def _unsafe_query_execution(self, query, params):
-        """Level 3 - Unsafe query execution (SQL injection)"""
+        """Level 2 - Unsafe query execution (SQL injection)"""
         try:
             if params:
                 # Bug: String formatting instead of parameterized queries
